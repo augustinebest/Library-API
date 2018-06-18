@@ -1,4 +1,16 @@
 const fs = require('fs');
+const express = require('express');
+const app = express();
+
+app.get('/', function(req, res) {
+    res.send(lib.getLibrary());
+})
+
+app.listen(2000, function() {
+    console.log("The server is running on port 2000");
+})
+
+
 
 function Library(name) {
     this.name = name;
@@ -89,6 +101,25 @@ Library.prototype.getBookByParam = function(param, value) {
     console.log(books);
 }
 
+Library.prototype.borrowBook = function(id) {
+    let bookIndex = this.getBookByIndex(id);
+    let borrowBook = this.books[bookIndex];
+    if(!borrowBook.borrow) {
+        borrowBook.borrow = true;
+        // console.log("You can borrow this book");
+        this.updateLibrary();
+    } else {
+        console.log("You cannot borrow this book");
+    }
+    // for(let i=0; i<book.length; i++) {
+    //     if(!book.borrow) {
+    //         console.log("You can borrow this book");
+    //     } else {
+    //         console.log("You cannot borrow this book");
+    //     }
+    // }
+}
+
 const lib = new Library("Best");
 const book1 = new Books("Strange man", "Morrisson", 12, 1998);
 const book2 = new Books("Great wall", "Peterson", 20, 2009);
@@ -97,4 +128,5 @@ const book2 = new Books("Great wall", "Peterson", 20, 2009);
 //lib.getBookByIndex(15);
 // lib.deleteBook(15);
 // lib.updateBook(12, book2);
-lib.getBookByParam("name","Sam-Smith");
+// lib.getBookByParam("name","Sam-Smith");
+lib.borrowBook(150);

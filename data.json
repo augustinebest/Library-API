@@ -1,1 +1,1 @@
-[{"name":"Sam-Smith","author":"John Doe","id":150,"year":2017,"borrow":false},{"name":"Great wall","author":"Peterson","id":20,"year":2009,"borrow":false}]
+[{"name":"Sam-Smith","author":"John Doe","id":150,"year":2017,"borrow":true},{"name":"Great wall","author":"Peterson","id":20,"year":2009,"borrow":false}]
