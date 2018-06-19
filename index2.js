@@ -1,13 +1,29 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
+let bodyParser = require('body-parser');
+
+let lib1 = new Library("Best");
+app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-    res.send(lib.getLibrary());
+    res.send('This is Nigeria, you gat it...yoyoyo111!');
 })
 
-app.listen(2000, function() {
-    console.log("The server is running on port 2000");
+app.get('/get-books', function(req, res) {
+    res.send(lib1.getLibrary());
+})
+
+app.post('/add-book', function(req, res) {
+    let param = req.body;
+    let book3 = new Books(param.name, param.author, param.id, param.year, false);
+    lib1.addBooks(book3);
+    res.send(lib1.getBooks());
+});
+
+let port = 3000;
+app.listen(port, function() {
+    console.log(`The server is running on ${port}`);
 })
 
 
@@ -18,12 +34,12 @@ function Library(name) {
     return this;
 }
 
-function Books(name, author, id, year) {
+function Books(name, author, id, year, borrow) {
     this.name = name;
     this.author = author;
     this.id = id;
     this.year = year;
-    this.borrow = false;
+    this.borrow = borrow;
 }
 
 Library.prototype.getLibrary = function() {
@@ -107,7 +123,9 @@ Library.prototype.borrowBook = function(id) {
     if(!borrowBook.borrow) {
         borrowBook.borrow = true;
         // console.log("You can borrow this book");
+        
         this.updateLibrary();
+
     } else {
         console.log("You cannot borrow this book");
     }
@@ -120,13 +138,13 @@ Library.prototype.borrowBook = function(id) {
     // }
 }
 
-const lib = new Library("Best");
-const book1 = new Books("Strange man", "Morrisson", 12, 1998);
-const book2 = new Books("Great wall", "Peterson", 20, 2009);
+// const lib = new Library("Best");
+const book1 = new Books("Strange man", "Morrisson", 12, 1998, false);
+const book2 = new Books("Great wall", "Peterson", 20, 2009, false);
 // lib.addBooks(book1);
 //lib.getBookById(15);
 //lib.getBookByIndex(15);
 // lib.deleteBook(15);
 // lib.updateBook(12, book2);
 // lib.getBookByParam("name","Sam-Smith");
-lib.borrowBook(150);
+// lib.borrowBook(150);
