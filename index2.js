@@ -21,7 +21,7 @@ app.post('/add-book', function(req, res) {
     res.send(lib1.getBooks());
 });
 
-app.get('/delete-book', function(req, res) {
+app.post('/delete-book', function(req, res) {
     let param = req.body;
     lib1.deleteBook(param.id);
     res.send(lib1.getBooks());
