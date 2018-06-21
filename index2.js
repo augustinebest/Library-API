@@ -53,7 +53,7 @@ Library.prototype.getLibrary = function() {
 }
 
 Library.prototype.updateLibrary = function() {
-    return fs.writeFileSync('./data.json', JSON.stringify(this.books));
+    return fs.writeFileSync('./data.json', JSON.stringify(this.books, null, 2));
 }
 
 Library.prototype.getBooks = function() {
@@ -97,10 +97,13 @@ Library.prototype.getBookByIndex = function(id) {
 }
 
 Library.prototype.deleteBook = function(id) {
-    // this.books = this.getLibrary();
+    this.books = this.getLibrary();
     let bookIndex = this.getBookByIndex(id);
+    // console.log(bookIndex);
     if(bookIndex) {
+        // console.log(bookIndex);
         this.books.splice(bookIndex, 1);
+        console.log("This have been deleted!");
         this.updateLibrary();
     }
 }
@@ -149,8 +152,8 @@ const book1 = new Books("Strange man", "Morrisson", 12, 1998, false);
 const book2 = new Books("Great wall", "Peterson", 20, 2009, false);
 // lib.addBooks(book1);
 //lib.getBookById(15);
-//lib.getBookByIndex(15);
-// lib.deleteBook(15);
+// lib.getBookByIndex(20);
+// lib.deleteBook(20);
 // lib.updateBook(12, book2);
 // lib.getBookByParam("name","Sam-Smith");
 // lib.borrowBook(150);

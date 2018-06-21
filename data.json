@@ -1,1 +1,30 @@
-[{"name":"Sam-Smith","author":"John Doe","id":150,"year":2017,"borrow":true},{"name":"Great wall","author":"Peterson","id":20,"year":2009,"borrow":false},{"name":"kemi","author":"Williams","id":120,"year":1994,"borrow":false},{"name":"kemi","author":"Williams","id":120,"year":1994,"borrow":false},{"name":"Tunde","author":"Peter","id":30,"year":1999,"borrow":false}]
+[
+  {
+    "name": "Sam-Smith",
+    "author": "John Doe",
+    "id": 150,
+    "year": 2017,
+    "borrow": true
+  },
+  {
+    "name": "kemi",
+    "author": "Williams",
+    "id": 120,
+    "year": 1994,
+    "borrow": false
+  },
+  {
+    "name": "kemi",
+    "author": "Williams",
+    "id": 120,
+    "year": 1994,
+    "borrow": false
+  },
+  {
+    "name": "Tunde",
+    "author": "Peter",
+    "id": 30,
+    "year": 1999,
+    "borrow": false
+  }
+]
